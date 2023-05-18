@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalho 2 Estácio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Ordenando Valores</h1>
+    <p>
+      Insira os valores do vetor separados por vírgula e as posições que deseja
+      trocar:
+    </p>
+
+    <form onsubmit="particionar(event)">
+      <label for="vetor">Vetor:</label>
+      <input type="text" id="vetor" /><br /><br />
+
+      <!-- Trocar os elementos de posição -->
+      <label for="pos1">Posição 1:</label>
+      <input type="number" id="pos1" /><br /><br />
+      <label for="pos2">Posição 2:</label>
+      <input type="number" id="pos2" /><br /><br />
+
+      <!-- Embaralhar os elementos do vetor -->
+      <label for="numSwaps">Quantidade de trocas:</label>
+      <input type="number" id="numSwaps" /><br /><br />
+
+      <!-- usando o pivot -->
+      <label for="inicio">Posição Inicial:</label>
+      <input type="number" id="inicio" name="inicio" required /><br />
+
+      <label for="fim">Posição Final:</label>
+      <input type="number" id="fim" name="fim" required /><br />
+
+      <label for="pivo">Valor do Pivô:</label>
+      <input type="number" id="pivo" name="pivo" required /><br />
+      <button type="submit">Particionar</button>
+    </form>
+
+    <ul id="valores">
+    </ul>
+    <p id="resultado"></p>
+
+    <!-- Botões -->
+    <button onclick="trocarPosicoes()">Trocar posições</button>
+    <button onclick="embaralhar()">Embaralhar vetor</button>
+    <button onclick="ordenar()">Ordenar por bubble</button>
+    <button onclick="ordenarSelection()">Ordenar por Selection</button>
+    <button onclick="sortArray()">Ordenar por Quick</button>
+
+    <!-- Resultado -->
+    <p id="resultado"></p>
+
+    <script src="js/ordenando.js"></script>
+  </body>
+</html>
