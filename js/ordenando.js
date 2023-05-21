@@ -32,9 +32,16 @@ const embaralhar = () => {
 
   shuffle(vetor, numSwaps);
 
-  document.getElementById(
-    "resultado"
-  ).innerHTML = `Vetor embaralhado: ${vetor}`;
+  const ulElement = document.getElementById("valores");
+
+  // Limpa a lista antes de adicionar os novos elementos
+  ulElement.innerHTML = "";
+
+  vetor.forEach((valor) => {
+    const liElement = document.createElement("li");
+    liElement.textContent = valor;
+    ulElement.appendChild(liElement);
+  });
 };
 
 //   Função bubble_sort para ordenar números inteiros
@@ -112,24 +119,29 @@ const sortArray = () => {
 // Função usando o pivot
 
 const particionamento = (arr, start, end, pivot) => {
-    let pivotIndex = start;
-    for (let i = start; i <= end; i++) {
-      if (arr[i] < pivot) {
-        [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
-        pivotIndex++;
-      }
+  let pivotIndex = start;
+  for (let i = start; i <= end; i++) {
+    if (arr[i] < pivot) {
+      [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+      pivotIndex++;
     }
-    return pivotIndex;
-  };
+  }
+  return pivotIndex;
+};
 
-  const particionar = (event) => {
-    event.preventDefault();
-    const vetor = document.getElementById("vetor").value.split(",").map((n) => Number(n));
-    const inicio = Number(document.getElementById("inicio").value);
-    const fim = Number(document.getElementById("fim").value);
-    const pivo = Number(document.getElementById("pivo").value);
+const particionar = (event) => {
+  event.preventDefault();
+  const vetor = document
+    .getElementById("vetor")
+    .value.split(",")
+    .map((n) => Number(n));
+  const inicio = Number(document.getElementById("inicio").value);
+  const fim = Number(document.getElementById("fim").value);
+  const pivo = Number(document.getElementById("pivo").value);
 
-    const pivotIndex = particionamento(vetor, inicio, fim, pivo);
+  const pivotIndex = particionamento(vetor, inicio, fim, pivo);
 
-    document.getElementById("resultado").textContent = `Vetor particionado: ${vetor}\nPosição do pivô: ${pivotIndex}`;
-  };
+  document.getElementById(
+    "resultado"
+  ).textContent = `Vetor particionado: ${vetor}\nPosição do pivô: ${pivotIndex}`;
+};
