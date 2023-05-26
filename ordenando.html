@@ -5,55 +5,218 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trabalho 2 Estácio</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <h1>Ordenando Valores</h1>
-    <p>
-      Insira os valores do vetor separados por vírgula e as posições que deseja
-      trocar:
-    </p>
 
-    <form onsubmit="particionar(event)">
-      <label for="vetor">Vetor:</label>
-      <input type="text" id="vetor" /><br /><br />
+    <!-- Trocar os elementos de posição -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula e as posições que
+        deseja trocar (Apenas Números):
+      </p>
 
-      <!-- Trocar os elementos de posição -->
-      <label for="pos1">Posição 1:</label>
-      <input type="number" id="pos1" /><br /><br />
-      <label for="pos2">Posição 2:</label>
-      <input type="number" id="pos2" /><br /><br />
+      <div class="input-group col-6">
+        <span class="input-group-text"
+          >Insira o valor e a quantidade de trocas</span
+        >
+        <input
+          id="vetorTroca"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+        <input
+          id="pos1"
+          type="number"
+          aria-label="pos 1"
+          class="form-control"
+          placeholder="Posição 1"
+        />
+        <input
+          id="pos2"
+          type="number"
+          aria-label="pos 2"
+          class="form-control"
+          placeholder="Posição 2"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-primary" onclick="trocarPosicoes()">Trocar posições usando swap</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valoresTroca"></ul>
+      </div>
+    </div>
 
-      <!-- Embaralhar os elementos do vetor -->
-      <label for="numSwaps">Quantidade de trocas:</label>
-      <input type="number" id="numSwaps" /><br /><br />
+    <!-- Embaralhar os elementos do vetor -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula e quantas vezes deseja
+        embaralhar (Apenas Números):
+      </p>
 
-      <!-- usando o pivot -->
-      <label for="inicio">Posição Inicial:</label>
-      <input type="number" id="inicio" name="inicio" required /><br />
+      <div class="input-group col-6">
+        <span class="input-group-text"
+          >Insira o valor e a quantidade de trocas</span
+        >
+        <input
+          id="vetor"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+        <input
+          id="numSwaps"
+          type="number"
+          aria-label="Trocas"
+          class="form-control"
+          placeholder="Quantidade de vezes que será embaralhado"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-secondary" onclick="embaralhar()">Embaralhar vetor usando shuffle</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valores"></ul>
+      </div>
+    </div>
 
-      <label for="fim">Posição Final:</label>
-      <input type="number" id="fim" name="fim" required /><br />
+    <!-- Ordenar os elementos bubble_sort -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula que deseja ordenar
+        (Apenas Números):
+      </p>
 
-      <label for="pivo">Valor do Pivô:</label>
-      <input type="number" id="pivo" name="pivo" required /><br />
-      <button type="submit">Particionar</button>
-    </form>
+      <div class="input-group col-6">
+        <span class="input-group-text">Insira o valor que deseja ordenar</span>
+        <input
+          id="vetorOrdenado"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-success" onclick="ordenar()">Ordenar por bubble_sort</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valoresOrdenadoBubble"></ul>
+      </div>
+    </div>
 
-    <ul id="valores">
-    </ul>
-    <p id="resultado"></p>
+    <!-- Ordenar os elementos selection_sort -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula que deseja ordenar
+        (Apenas Números):
+      </p>
 
-    <!-- Botões -->
-    <button onclick="trocarPosicoes()">Trocar posições</button>
-    <button onclick="embaralhar()">Embaralhar vetor</button>
-    <button onclick="ordenar()">Ordenar por bubble</button>
-    <button onclick="ordenarSelection()">Ordenar por Selection</button>
-    <button onclick="sortArray()">Ordenar por Quick</button>
+      <div class="input-group col-6">
+        <span class="input-group-text">Insira o valor que deseja ordenar</span>
+        <input
+          id="vetorSelection"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-danger" onclick="ordenarSelection()">Ordenar por selection_sort</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valoresOrdenadoSelection"></ul>
+      </div>
+    </div>
 
-    <!-- Resultado -->
-    <p id="resultado"></p>
+    <!-- Ordenar os elementos quick_sort -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula que deseja ordenar
+        (Apenas Números):
+      </p>
+
+      <div class="input-group col-6">
+        <span class="input-group-text">Insira o valor que deseja ordenar</span>
+        <input
+          id="vetorQuick"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-warning" onclick="sortArray()">Ordenar por quick_sort</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valoresOrdenadoQuick"></ul>
+      </div>
+    </div>
+
+    <!-- Ordenar os elementos particionamento -->
+    <div class="row">
+      <p>
+        Insira os valores do vetor separados por vírgula, a posição inicial, a posição final, e o pivô (Apenas Números):
+      </p>
+
+      <div class="input-group col-6">
+        <span class="input-group-text">Insira o valor que deseja particionar</span>
+        <input
+          id="vetorParticionado"
+          type="text"
+          aria-label="Valor"
+          class="form-control"
+          placeholder="Vetor separado por vírgulas"
+        />
+        <input
+          id="posicaoInicial"
+          type="number"
+          aria-label="posIni"
+          class="form-control"
+          placeholder="Posição inicial"
+        />
+        <input
+          id="posicaoFim"
+          type="number"
+          aria-label="posFim"
+          class="form-control"
+          placeholder="Posição final"
+        />
+        <input
+          id="pivo"
+          type="number"
+          aria-label="pivo"
+          class="form-control"
+          placeholder="Valor do pivô"
+        />
+      </div>
+      <div class="botao col-12 mt-2">
+        <button type="button" class="btn btn-outline-info" onclick="particionar(event)">Particionar</button>
+      </div>
+      <div class="col-12 mt-2">
+        <ul id="valorParticionado"></ul>
+        <p id="valorPivo"></p>
+      </div>
+    </div>
 
     <script src="js/ordenando.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

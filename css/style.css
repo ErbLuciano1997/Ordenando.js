@@ -1,0 +1,14 @@
+body{
+    overflow-x: hidden;
+}
+
+h1{
+    text-align: center;
+    padding: 20px;
+}
+
+.botao{
+display: flex;
+justify-content: end;
+}
+
